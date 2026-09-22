@@ -3,8 +3,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import PrizePool from './components/PrizePool';
 import TournamentDetails from './components/TournamentDetails';
-import AboutSection from './components/AboutSection';
-import TournamentFormat from './components/TournamentFormat';
 import RulesSection from './components/RulesSection';
 import GallerySection from './components/GallerySection';
 import RegistrationSection from './components/RegistrationSection';
@@ -28,12 +26,6 @@ export default function App() {
 
         {/* TOURNAMENT DETAILS */}
         <TournamentDetails />
-
-        {/* ABOUT */}
-        <AboutSection />
-
-        {/* SCHEDULE / FORMAT */}
-        <TournamentFormat />
 
         {/* RULES */}
         <RulesSection />

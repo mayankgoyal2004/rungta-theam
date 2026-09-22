@@ -103,48 +103,6 @@ export default function PrizePool() {
 
         </div>
 
-        {/* SCHOLARSHIP SUMMARY STRIP */}
-        <div style={{
-          marginTop: '25px',
-          background: 'var(--navy)',
-          color: 'white',
-          borderRadius: '8px',
-          padding: '16px 22px',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '15px'
-        }}>
-          <div>
-            <span style={{ color: 'var(--gold)', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>
-              SANJAY RUNGTA GROUP OF INSTITUTIONS
-            </span>
-            <strong style={{ fontFamily: '"Barlow Condensed", sans-serif', fontSize: '20px', textTransform: 'uppercase' }}>
-              PLAYER SCHOLARSHIP PROGRAM
-            </strong>
-          </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '12px' }}>
-            <div>
-              <span style={{ color: '#b7c2d0', fontSize: '10px', display: 'block' }}>Winner Squad</span>
-              <strong style={{ color: 'var(--gold)', fontFamily: '"Barlow Condensed", sans-serif', fontSize: '17px' }}>₹5,100 / player</strong>
-            </div>
-            <div>
-              <span style={{ color: '#b7c2d0', fontSize: '10px', display: 'block' }}>Runner Squad</span>
-              <strong style={{ color: 'white', fontFamily: '"Barlow Condensed", sans-serif', fontSize: '17px' }}>₹3,100 / player</strong>
-            </div>
-            <div>
-              <span style={{ color: '#b7c2d0', fontSize: '10px', display: 'block' }}>Semifinalist</span>
-              <strong style={{ color: 'white', fontFamily: '"Barlow Condensed", sans-serif', fontSize: '17px' }}>₹2,100 / player</strong>
-            </div>
-            <div>
-              <span style={{ color: '#b7c2d0', fontSize: '10px', display: 'block' }}>Participant</span>
-              <strong style={{ color: 'white', fontFamily: '"Barlow Condensed", sans-serif', fontSize: '17px' }}>₹1,100 / player</strong>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );

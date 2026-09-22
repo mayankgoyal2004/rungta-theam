@@ -1,61 +1,77 @@
 import React from 'react';
+import { 
+  CircleDot, 
+  Sparkles, 
+  Trophy, 
+  Clock, 
+  CheckCircle2, 
+  ShieldAlert, 
+  UserX, 
+  Ban, 
+  FileBadge, 
+  Shirt, 
+  Gavel 
+} from 'lucide-react';
 
 export default function RulesSection() {
-  const rules = [
+  const col1Rules = [
     {
       id: "01",
-      title: "Tennis Ball",
-      desc: "This tournament will be played with a tennis ball."
+      icon: <CircleDot className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "This tournament will be played with a tennis ball."
     },
     {
       id: "02",
-      title: "New Ball",
-      desc: "Each inning will start with a new ball."
+      icon: <Sparkles className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "Each inning will start with a new ball."
     },
     {
       id: "03",
-      title: "Knockout Matches",
-      desc: "Knockout matches will be of 6 overs."
+      icon: <Trophy className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "Knockout matches will be of 6 overs."
     },
     {
       id: "04",
-      title: "Semi Final & Final",
-      desc: "Semi Final will be 8 overs and Final will be 10 overs a side."
+      icon: <Clock className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "Semi Final will be 8 overs and the Final will be 10 overs a side. The team should report 30 minutes prior to the scheduled match start time."
     },
     {
       id: "05",
-      title: "Umpire's Decision",
-      desc: "On-field umpire's decision will be the final one."
+      icon: <CheckCircle2 className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "On-field umpire's decision would be the final one."
     },
     {
       id: "06",
-      title: "LBW & Leg Byes",
-      desc: "LBW and Leg byes are not applicable for this tournament."
-    },
+      icon: <ShieldAlert className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "LBW and Leg byes are not applicable for this tournament."
+    }
+  ];
+
+  const col2Rules = [
     {
       id: "07",
-      title: "Team Eligibility",
-      desc: "A player who has played in one team cannot play in another team."
+      icon: <UserX className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "A player who has played in one team is not allowed to play in another team."
     },
     {
       id: "08",
-      title: "Chucking",
-      desc: "Chucking is strictly not allowed."
+      icon: <Ban className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "Chucking is strictly not allowed."
     },
     {
       id: "09",
-      title: "Documents",
-      desc: "All players must produce School ID and Aadhaar card at registration."
+      icon: <FileBadge className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "All players must produce a School ID card and Aadhaar card at the time of registration."
     },
     {
       id: "10",
-      title: "Uniform",
-      desc: "All players in the team need to wear the same colour sports uniform."
+      icon: <Shirt className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "All the players in the team need to wear the same colour sports uniform."
     },
     {
       id: "11",
-      title: "Organizer Rights",
-      desc: "Organizer has full right to change match rules according to situation."
+      icon: <Gavel className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      text: "The organizer has full right to change the match rules according to the situation."
     }
   ];
 
@@ -63,33 +79,57 @@ export default function RulesSection() {
     <section className="section rules-section" id="rules">
       <div className="container-custom">
         
+        {/* SECTION HEADING */}
         <div className="section-heading center">
-          <span className="section-label">
-            FAIR PLAY
-          </span>
-
-          <h2>
+          <h2 className="prizes-main-title">
             RULES & <span>REGULATIONS</span>
           </h2>
-
-          <p>
-            Fair play for a better tomorrow.
+          <p className="prizes-subtitle">
+            FAIR PLAY FOR A BETTER TOMORROW
           </p>
         </div>
 
-        <div className="rules-grid">
-          {rules.map((rule) => (
-            <div className="rule" key={rule.id}>
-              <span className="rule-number">
-                {rule.id}
-              </span>
-
-              <div>
-                <h3>{rule.title}</h3>
-                <p>{rule.desc}</p>
+        {/* 2-COLUMN RULES CONTAINER */}
+        <div className="rules-two-cols">
+          
+          {/* COLUMN 1 (01 TO 06) */}
+          <div className="rules-col">
+            {col1Rules.map((rule) => (
+              <div className="rule-item-card" key={rule.id}>
+                <div className="rule-num-box">
+                  {rule.id}
+                </div>
+                <div className="rule-body">
+                  <div className="rule-icon-box">
+                    {rule.icon}
+                  </div>
+                  <p className="rule-text">
+                    {rule.text}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* COLUMN 2 (07 TO 11) */}
+          <div className="rules-col">
+            {col2Rules.map((rule) => (
+              <div className="rule-item-card" key={rule.id}>
+                <div className="rule-num-box">
+                  {rule.id}
+                </div>
+                <div className="rule-body">
+                  <div className="rule-icon-box">
+                    {rule.icon}
+                  </div>
+                  <p className="rule-text">
+                    {rule.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
       </div>

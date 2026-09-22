@@ -54,14 +54,14 @@ export default function Header({ onOpenRegister }) {
               </a>
               <span className="text-white/20 hidden sm:inline">|</span>
               <a
-                href="https://rungta.ac.in"
+                href="https://www.rungtacolleges.com"
                 target="_blank"
                 rel="noreferrer"
                 className="hidden sm:flex items-center gap-1 text-slate-300 hover:text-amber-400 transition-colors"
                 title="Visit Official Campus Website"
               >
                 <Globe className="w-3.5 h-3.5" />
-                <span>rungta.ac.in</span>
+                <span>www.rungtacolleges.com</span>
               </a>
             </div>
           </div>
@@ -111,12 +111,6 @@ export default function Header({ onOpenRegister }) {
               onClick={() => setMobileMenuOpen(false)}
             >
               Tournament
-            </a>
-            <a 
-              href="#schedule" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Schedule
             </a>
             <a 
               href="#rules" 
