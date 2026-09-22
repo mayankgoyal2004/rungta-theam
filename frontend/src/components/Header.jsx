@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { GraduationCap, BookOpen, Award, HeartHandshake, Phone, Globe, Flame } from 'lucide-react';
+import { GraduationCap, BookOpen, Award, HeartHandshake, Phone, Globe } from 'lucide-react';
 
-export default function Header({ onOpenRegister }) {
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -133,13 +133,13 @@ export default function Header({ onOpenRegister }) {
           </nav>
 
           {/* REGISTER CTA */}
-          <button
-            onClick={onOpenRegister}
+          <a
+            href="#hero-register"
             className="btn btn-primary nav-btn"
           >
             Register Your Team
             <span>→</span>
-          </button>
+          </a>
 
           {/* MOBILE MENU BUTTON */}
           <button
