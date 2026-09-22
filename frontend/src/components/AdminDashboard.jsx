@@ -35,6 +35,7 @@ import {
   KeyRound,
   ShieldCheck
 } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export default function AdminDashboard({ onBackToHome }) {
   // Theme state: 'dark' | 'light'
@@ -61,7 +62,7 @@ export default function AdminDashboard({ onBackToHome }) {
   useEffect(() => {
     const existingToken = sessionStorage.getItem('rpl_admin_token');
     if (existingToken) {
-      fetch('/api/auth/verify', {
+      fetch(getApiUrl('/api/auth/verify'), {
         headers: { 'Authorization': `Bearer ${existingToken}` }
       })
         .then((res) => {
@@ -144,7 +145,7 @@ export default function AdminDashboard({ onBackToHome }) {
 
     setIsSubmittingPassword(true);
     try {
-      const res = await fetch('/api/auth/change-password', {
+      const res = await fetch(getApiUrl('/api/auth/change-password'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -194,7 +195,7 @@ export default function AdminDashboard({ onBackToHome }) {
     setPinError('');
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(getApiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin: pinInput.trim() })
@@ -248,10 +249,10 @@ export default function AdminDashboard({ onBackToHome }) {
     try {
       const limitParam = pageSize === -1 ? 'all' : pageSize;
       const [leadsRes, statsRes] = await Promise.all([
-        fetch(`/api/leads?q=${encodeURIComponent(searchQuery)}&status=${selectedStatus}&page=${currentPage}&limit=${limitParam}`, {
+        fetch(getApiUrl(`/api/leads?q=${encodeURIComponent(searchQuery)}&status=${selectedStatus}&page=${currentPage}&limit=${limitParam}`), {
           headers: { 'Authorization': `Bearer ${adminToken}` }
         }),
-        fetch('/api/stats', {
+        fetch(getApiUrl('/api/stats'), {
           headers: { 'Authorization': `Bearer ${adminToken}` }
         })
       ]);
@@ -293,7 +294,7 @@ export default function AdminDashboard({ onBackToHome }) {
   // Update Status (Authenticated)
   const handleStatusChange = async (leadId, newStatus) => {
     try {
-      const res = await fetch(`/api/leads/${leadId}`, {
+      const res = await fetch(getApiUrl(`/api/leads/${leadId}`), {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',
@@ -324,7 +325,7 @@ export default function AdminDashboard({ onBackToHome }) {
   const handleSaveNotes = async () => {
     if (!activeNotesLead) return;
     try {
-      const res = await fetch(`/api/leads/${activeNotesLead.id}`, {
+      const res = await fetch(getApiUrl(`/api/leads/${activeNotesLead.id}`), {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',
@@ -357,7 +358,7 @@ export default function AdminDashboard({ onBackToHome }) {
       return;
     }
     try {
-      const res = await fetch(`/api/leads/${leadId}`, {
+      const res = await fetch(getApiUrl(`/api/leads/${leadId}`), {
         method: 'DELETE',
         headers: { 
           'Authorization': `Bearer ${adminToken}`
@@ -384,7 +385,7 @@ export default function AdminDashboard({ onBackToHome }) {
   const handleAddLeadSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch(getApiUrl('/api/leads'), {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -416,7 +417,7 @@ export default function AdminDashboard({ onBackToHome }) {
 
   // Export CSV (Authenticated via token query)
   const handleExportCSV = () => {
-    window.open(`/api/leads/export-csv?token=${encodeURIComponent(adminToken)}`, '_blank');
+    window.open(getApiUrl(`/api/leads/export-csv?token=${encodeURIComponent(adminToken)}`), '_blank');
   };
 
   // WhatsApp quick link

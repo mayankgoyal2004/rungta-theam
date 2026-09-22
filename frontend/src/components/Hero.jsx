@@ -17,6 +17,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getApiUrl } from '../config/api';
 
 export default function Hero() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -36,7 +37,7 @@ export default function Hero() {
     setSubmitting(true);
 
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch(getApiUrl('/api/leads'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
