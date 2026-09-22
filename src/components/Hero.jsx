@@ -5,6 +5,32 @@ export default function Hero({ onOpenRegister }) {
     <section className="hero" id="home">
       <div className="hero-overlay"></div>
 
+      {/* HERO PLAYER, BADGE & SLOGAN - Attached to full section width to eliminate blank gaps */}
+      <div className="hero-player">
+        <div className="hero-player-glow"></div>
+
+        <img
+          src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=2000&q=90"
+          alt="Cricket Stadium"
+        />
+
+        {/* 3D RPL 5.0 Crest Logo */}
+        <div className="hero-badge-container">
+          <img
+            src="/rpl-crest-3d.png"
+            alt="RPL 5.0 Tournament Crest"
+            className="hero-crest-badge"
+          />
+        </div>
+
+        {/* HERO SLOGAN */}
+        <div className="hero-slogan">
+          <span>PLAY.</span>
+          <span>COMPETE.</span>
+          <span>GROW.</span>
+        </div>
+      </div>
+
       <div className="container-custom hero-container">
         
         {/* HERO CONTENT */}
@@ -70,32 +96,6 @@ export default function Hero({ onOpenRegister }) {
             </a>
           </div>
 
-        </div>
-
-        {/* HERO PLAYER & BADGE */}
-        <div className="hero-player">
-          <div className="hero-player-glow"></div>
-
-          <img
-            src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1000&q=85"
-            alt="Cricket Stadium"
-          />
-
-          {/* 3D RPL 5.0 Crest Logo */}
-          <div className="hero-badge-container">
-            <img
-              src="/rpl-crest-3d.png"
-              alt="RPL 5.0 Tournament Crest"
-              className="hero-crest-badge"
-            />
-          </div>
-        </div>
-
-        {/* HERO SLOGAN */}
-        <div className="hero-slogan">
-          <span>PLAY.</span>
-          <span>COMPETE.</span>
-          <span>GROW.</span>
         </div>
 
       </div>

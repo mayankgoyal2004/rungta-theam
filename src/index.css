@@ -295,14 +295,7 @@ h1, h2, h3, h4, .font-heading {
   color: white;
   overflow: hidden;
   width: 100%;
-  background: linear-gradient(
-      90deg,
-      rgba(2, 18, 39, 0.98) 0%,
-      rgba(3, 24, 48, 0.88) 48%,
-      rgba(3, 22, 44, 0.45) 100%
-    ),
-    url("https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=2000&q=90")
-      center / cover;
+  background: #021227;
 }
 
 .hero-overlay {
@@ -313,6 +306,7 @@ h1, h2, h3, h4, .font-heading {
     rgba(245, 188, 23, 0.16),
     transparent 40%
   );
+  pointer-events: none;
 }
 
 .hero-container {
@@ -324,7 +318,7 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .hero-content {
-  width: 60%;
+  width: 58%;
   padding: 70px 0 135px;
 }
 
@@ -431,20 +425,24 @@ h1, h2, h3, h4, .font-heading {
 
 .hero-player {
   position: absolute;
-  width: 55%;
+  width: 58%;
+  min-width: 550px;
   height: 100%;
-  right: -5%;
+  right: 0;
   top: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-player img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.88;
+  object-position: right center;
+  opacity: 0.95;
   mix-blend-mode: screen;
-  mask-image: linear-gradient(to right, transparent, black 35%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 12%, rgba(0, 0, 0, 0.85) 35%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 12%, rgba(0, 0, 0, 0.85) 35%, black 100%);
 }
 
 .hero-player-glow {
@@ -460,18 +458,19 @@ h1, h2, h3, h4, .font-heading {
 
 .hero-badge-container {
   position: absolute;
-  top: 75px;
-  right: 8%;
+  top: 70px;
+  right: 12%;
   z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: auto;
 }
 
 .hero-crest-badge {
-  width: 100px;
+  width: 110px;
   height: auto;
-  max-height: 115px;
+  max-height: 125px;
   object-fit: contain;
   filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 12px rgba(248, 197, 28, 0.25));
   transition: transform 0.3s ease;
@@ -483,15 +482,16 @@ h1, h2, h3, h4, .font-heading {
 
 .hero-slogan {
   position: absolute;
-  right: 4%;
+  right: 7%;
   top: 42%;
   display: flex;
   flex-direction: column;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 24px;
+  font-size: 25px;
   font-style: italic;
   color: white;
-  opacity: 0.9;
+  opacity: 0.95;
+  pointer-events: auto;
 }
 
 .hero-slogan span:nth-child(2) {
@@ -704,7 +704,7 @@ h1, h2, h3, h4, .font-heading {
 .prize-grid-ref {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 14px;
   margin-top: 28px;
 }
 
@@ -713,14 +713,14 @@ h1, h2, h3, h4, .font-heading {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  padding: 18px 14px;
+  padding: 16px 12px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-  min-height: 200px;
+  min-height: 195px;
 }
 
 .prize-card-ref:hover {
@@ -752,7 +752,8 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .trophy-img-wrap {
-  flex: 0 0 45%;
+  flex: 0 0 36%;
+  max-width: 95px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -760,7 +761,7 @@ h1, h2, h3, h4, .font-heading {
 
 .trophy-img {
   width: 100%;
-  height: 135px;
+  height: 125px;
   object-fit: contain;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.65));
   transition: transform 0.3s ease;
@@ -781,34 +782,37 @@ h1, h2, h3, h4, .font-heading {
 
 .prize-badge-title {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .prize-amount {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 38px;
+  font-size: clamp(28px, 2.2vw, 35px);
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
-  margin: 4px 0 8px 0;
-  letter-spacing: 0.3px;
+  margin: 3px 0 6px 0;
+  letter-spacing: 0.2px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
 }
 
 .scholarship-pill {
   width: 100%;
   background: linear-gradient(180deg, #ffcc00 0%, #e6a800 100%);
   border-radius: 6px;
-  padding: 6px 4px;
+  padding: 5px 4px;
   text-align: center;
   color: #041b38;
   box-shadow: 0 4px 10px rgba(230, 168, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
 }
 
 .sch-label {
@@ -822,7 +826,7 @@ h1, h2, h3, h4, .font-heading {
 
 .sch-val {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   display: block;
   line-height: 1;
