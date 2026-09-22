@@ -3,28 +3,20 @@ import React from 'react';
 export default function GallerySection() {
   const galleryImages = [
     {
-      url: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=600&q=85",
-      title: "Power Shot Under Lights"
+      url: "/gallery/DSC09033.JPG.jpeg",
+      title: "Match Action & Spirit"
     },
     {
-      url: "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=600&q=85",
-      title: "Team Huddle & Strategy"
+      url: "/gallery/DSC09845.JPG.jpeg",
+      title: "Championship Moments"
     },
     {
-      url: "https://images.unsplash.com/photo-1589801258579-18e091f4ca26?auto=format&fit=crop&w=600&q=85",
-      title: "Match Cricket Ball"
+      url: "/gallery/file_0000000085b88211955db56a354a66d1.png",
+      title: "RPL 5.0 Tournament Action"
     },
     {
-      url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=85",
-      title: "Championship Trophy"
-    },
-    {
-      url: "/images/match-action.jpg",
-      title: "Team Lineup & Fair Play"
-    },
-    {
-      url: "/images/ground-facility.jpg",
-      title: "Rungta Stadium Facility"
+      url: "/gallery/file_0000000093f88211a06340816a0470a3.png",
+      title: "Ground Energy & Celebration"
     }
   ];
 
@@ -32,14 +24,14 @@ export default function GallerySection() {
     <section className="section gallery-section" id="gallery">
       <div className="container-custom">
         
-        {/* GALLERY HEADER (WITHOUT VIEW MORE BUTTON) */}
+        {/* GALLERY HEADER */}
         <div className="gallery-header-clean">
           <div className="gallery-accent-bar"></div>
           <h2 className="gallery-title">GALLERY</h2>
           <p className="gallery-subtitle">MOMENTS THAT INSPIRE</p>
         </div>
 
-        {/* 6-CARD ROW GRID */}
+        {/* 4-CARD ROW GRID */}
         <div className="gallery-grid-row">
           {galleryImages.map((img, idx) => (
             <div className="gallery-card-item group" key={idx}>

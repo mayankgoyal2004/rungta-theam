@@ -325,7 +325,7 @@ h1, h2, h3, h4, .font-heading {
 
 .hero-content {
   width: 60%;
-  padding: 75px 0 75px;
+  padding: 70px 0 135px;
 }
 
 .present-label {
@@ -498,53 +498,84 @@ h1, h2, h3, h4, .font-heading {
   color: var(--gold);
 }
 
-/* HERO FEATURES */
+/* HERO FEATURES STRIP (MATCHING REFERENCE IMAGE) */
 .hero-features {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 10;
-  background: rgba(4, 27, 56, 0.97);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #020d20;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   width: 100%;
 }
 
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  max-width: 1260px;
+  margin: 0 auto;
 }
 
 .hero-feature {
-  min-height: 92px;
+  min-height: 94px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 13px;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  padding: 14px 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 0.25s ease;
+}
+
+.hero-feature:hover {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .hero-feature:last-child {
   border-right: 0;
 }
 
-.feature-icon {
-  color: var(--gold);
-  font-size: 30px;
-  font-weight: 900;
+.hero-feat-icon {
+  color: #f8c51c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  height: 34px;
 }
 
-.hero-feature strong {
+.hero-feat-svg {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.hero-feat-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-feat-main {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 17px;
-  display: block;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
-.hero-feature small {
-  color: #b7c2d0;
-  font-size: 9px;
-  margin-top: 3px;
-  display: block;
+.hero-feat-sub {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-top: 2px;
+  line-height: 1.2;
 }
 
 /* SECTIONS */
@@ -588,11 +619,61 @@ h1, h2, h3, h4, .font-heading {
   margin-top: 10px;
 }
 
-/* PRIZES */
+/* =========================================================
+   PRIZE POOL & TOURNAMENT MASTER SECTION (MATCHING TEMPLATE)
+========================================================= */
+.prizepool-master-wrapper {
+  width: 100%;
+}
+
+.pp-section {
+  padding: 50px 0;
+  width: 100%;
+  position: relative;
+}
+
+.pp-header {
+  margin-bottom: 24px;
+}
+
+.pp-header.center {
+  text-align: center;
+}
+
+.pp-sub-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.pp-main-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(38px, 5vw, 54px);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+}
+
+.pp-title-red {
+  color: #d71920;
+}
+
+.pp-title-navy {
+  color: #061b38;
+}
+
+/* SECTION 1: TOP 4 CHAMPIONSHIP CARDS (FAVORITE REFERENCE DESIGN) */
 .prizes-section {
   background: linear-gradient(rgba(240, 245, 250, 0.96), rgba(240, 245, 250, 0.96)),
     url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1600&q=80") center/cover;
   padding: 60px 0;
+  width: 100%;
 }
 
 .prizes-main-title {
@@ -612,7 +693,7 @@ h1, h2, h3, h4, .font-heading {
 
 .prizes-subtitle {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: #041b38;
   letter-spacing: 1.5px;
@@ -662,6 +743,14 @@ h1, h2, h3, h4, .font-heading {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3), 0 0 18px rgba(248, 197, 28, 0.15);
 }
 
+.runner-card {
+  border-color: rgba(203, 213, 225, 0.3);
+}
+
+.bronze-card {
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
 .trophy-img-wrap {
   flex: 0 0 45%;
   display: flex;
@@ -698,10 +787,6 @@ h1, h2, h3, h4, .font-heading {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   line-height: 1.1;
-}
-
-.winner-card .prize-badge-title {
-  color: #ffffff;
 }
 
 .prize-amount {
@@ -769,6 +854,8 @@ h1, h2, h3, h4, .font-heading {
 .ball-img {
   height: 65px;
   width: 65px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
 }
 
 .entry-info {
@@ -788,6 +875,433 @@ h1, h2, h3, h4, .font-heading {
   color: #ffffff;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+}
+
+.pp-podium-footer-slogan {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #dce3ea;
+  text-align: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #475569;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pp-dot {
+  color: #d71920;
+  font-size: 18px;
+}
+
+/* SECTION 2: SPECIAL AWARDS (MATCHING REFERENCE IMAGE) */
+.pp-special-awards-section {
+  background:linear-gradient(180deg, rgba(2, 14, 34, 0.88) 0%, rgba(3, 19, 46, 0.72) 50%, rgba(2, 12, 30, 0.92) 100%), url("/images/special-awards-bg.jpg") center/cover no-repeat;
+  color: #ffffff;
+  padding: 70px 0 65px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-awards-header {
+  margin-bottom: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-awards-sub-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pp-awards-main-title {
+  font-family: "Chakra Petch", "Barlow Condensed", sans-serif;
+  font-size: clamp(38px, 5.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.15);
+}
+
+.pp-special-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-special-card {
+  background: rgba(3, 18, 42, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(56, 189, 248, 0.32);
+  border-radius: 16px;
+  padding: 26px 10px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 200px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.pp-special-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(248, 197, 28, 0.75);
+  background: rgba(5, 26, 60, 0.92);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(248, 197, 28, 0.25);
+}
+
+.pp-special-icon-box {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.pp-special-card:hover .pp-special-icon-box {
+  transform: scale(1.1);
+}
+
+.pp-special-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pp-special-twoline {
+  line-height: 1.1;
+}
+
+.pp-special-amount {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pp-special-celebration-text {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* SECTION 3: TOURNAMENT FORMAT (MATCHING REFERENCE IMAGE) */
+.pp-format-section {
+  background: #ffffff url("/images/tournament-format-bg.jpg") center/cover no-repeat;
+  padding: 75px 0 70px;
+  width: 100%;
+  position: relative;
+}
+
+.pp-tf-header {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.pp-tf-sub-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #d71920;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pp-tf-main-title {
+  font-family: "Chakra Petch", "Barlow Condensed", sans-serif;
+  font-size: clamp(38px, 5.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #061b38;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(6, 27, 56, 0.15);
+}
+
+.pp-tf-flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1080px;
+  margin: 36px auto 0;
+}
+
+.pp-tf-stage-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pp-tf-card-unit {
+  width: 100%;
+  max-width: 290px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(6, 27, 56, 0.14);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.pp-tf-card-unit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(6, 27, 56, 0.22);
+}
+
+.pp-tf-chevron-head {
+  background: linear-gradient(180deg, #07224a 0%, #03142e 100%);
+  color: #ffffff;
+  padding: 18px 24px 18px 20px;
+  text-align: center;
+  position: relative;
+  clip-path: polygon(0% 0%, calc(100% - 22px) 0%, 100% 50%, calc(100% - 22px) 100%, 0% 100%);
+}
+
+.pp-tf-stage-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 23px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.pp-tf-overs-tag {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-top: 5px;
+  display: block;
+  letter-spacing: 0.8px;
+}
+
+.pp-tf-card-body {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 20px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp-tf-ball-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pp-tf-ball-line {
+  height: 2px;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.8), transparent);
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.pp-tf-desc-text {
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 230px;
+  margin-top: 14px;
+}
+
+.pp-tf-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+  margin-top: -45px;
+}
+
+.pp-tf-double-arrow {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 6px rgba(215, 25, 32, 0.35));
+  transition: transform 0.25s ease;
+}
+
+.pp-tf-connector:hover .pp-tf-double-arrow {
+  transform: translateX(4px);
+}
+
+/* SECTION 4: SCHOLARSHIP DETAILS */
+.pp-scholarship-section {
+  background:  linear-gradient(180deg, #03142e 0%, #020c1d 100%) , url("/images/scholarship-bg.jpg") center/cover no-repeat;
+  color: #ffffff;
+  padding: 65px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-sch-details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1040px;
+  margin: 32px auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-sch-card {
+  background: rgba(3, 18, 42, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  padding: 26px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.pp-sch-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(248, 197, 28, 0.75);
+  background: rgba(5, 26, 60, 0.92);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(248, 197, 28, 0.25);
+}
+
+.pp-sch-icon-wrap {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.pp-sch-card:hover .pp-sch-icon-wrap {
+  transform: scale(1.1);
+}
+
+.pp-sch-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  line-height: 1.15;
+}
+
+.pp-sch-amount {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  color: #f8c51c;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* RESPONSIVE PRIZE POOL */
+@media (max-width: 990px) {
+  .pp-special-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pp-sch-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pp-tf-flow-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pp-tf-connector {
+    transform: rotate(90deg);
+    margin: 4px 0;
+  }
+  .pp-special-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pp-sch-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .pp-special-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .pp-special-card {
+    padding: 18px 8px 14px;
+    min-height: 175px;
+  }
+  .pp-special-amount {
+    font-size: 24px;
+  }
+  .pp-special-celebration-text {
+    font-size: 13px;
+  }
+  .pp-sch-details-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }
 
 /* DETAILS */
@@ -1154,27 +1668,34 @@ h1, h2, h3, h4, .font-heading {
 
 .gallery-grid-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .gallery-card-item {
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  height: 175px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 230px;
+  box-shadow: 0 6px 20px rgba(4, 27, 56, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   background: #020c18;
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.gallery-card-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(4, 27, 56, 0.22);
 }
 
 .gallery-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  object-position: center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-card-item:hover .gallery-card-img {
@@ -1184,12 +1705,12 @@ h1, h2, h3, h4, .font-heading {
 .gallery-card-hover {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(4, 27, 56, 0.9), transparent 60%);
+  background: linear-gradient(to top, rgba(4, 27, 56, 0.92) 0%, rgba(4, 27, 56, 0.35) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
   align-items: flex-end;
-  padding: 10px;
+  padding: 16px;
 }
 
 .gallery-card-item:hover .gallery-card-hover {
@@ -1198,11 +1719,11 @@ h1, h2, h3, h4, .font-heading {
 
 .gallery-hover-text {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   line-height: 1.2;
 }
 
@@ -1645,13 +2166,12 @@ h1, h2, h3, h4, .font-heading {
     align-items: flex-start;
     gap: 20px;
   }
-  .gallery-grid,
   .gallery-grid-row {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 160px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  .gallery-item.large {
-    grid-row: span 1;
+  .gallery-card-item {
+    height: 200px;
   }
   .registration-inner {
     grid-template-columns: 1fr;
@@ -1743,11 +2263,11 @@ h1, h2, h3, h4, .font-heading {
   .prize-card h3 {
     font-size: 35px;
   }
-  .gallery-grid,
   .gallery-grid-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-  .gallery-item {
+  .gallery-card-item {
     height: 220px;
   }
   .footer-grid {

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import PrizePool from './components/PrizePool';
-import TournamentDetails from './components/TournamentDetails';
 import RulesSection from './components/RulesSection';
 import GallerySection from './components/GallerySection';
 import RegistrationSection from './components/RegistrationSection';
@@ -21,11 +20,8 @@ export default function App() {
         {/* HERO SECTION */}
         <Hero onOpenRegister={() => setIsModalOpen(true)} />
 
-        {/* PRIZES SECTION */}
+        {/* PRIZES & TOURNAMENT MASTER SECTION */}
         <PrizePool />
-
-        {/* TOURNAMENT DETAILS */}
-        <TournamentDetails />
 
         {/* RULES */}
         <RulesSection />

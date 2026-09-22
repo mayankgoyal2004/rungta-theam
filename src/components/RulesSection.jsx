@@ -17,32 +17,32 @@ export default function RulesSection() {
   const col1Rules = [
     {
       id: "01",
-      icon: <CircleDot className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <CircleDot className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "This tournament will be played with a tennis ball."
     },
     {
       id: "02",
-      icon: <Sparkles className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <Sparkles className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "Each inning will start with a new ball."
     },
     {
       id: "03",
-      icon: <Trophy className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
-      text: "Knockout matches will be of 6 overs."
+      icon: <Trophy className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
+      text: "Knockout prelims matches will be of 6 overs."
     },
     {
       id: "04",
-      icon: <Clock className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
-      text: "Semi Final will be 8 overs and the Final will be 10 overs a side. The team should report 30 minutes prior to the scheduled match start time."
+      icon: <Clock className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
+      text: "Semi Final will be 8 overs and the Final will be 10 overs a side. Teams should report 30 minutes prior to scheduled match start time."
     },
     {
       id: "05",
-      icon: <CheckCircle2 className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <CheckCircle2 className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "On-field umpire's decision would be the final one."
     },
     {
       id: "06",
-      icon: <ShieldAlert className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <ShieldAlert className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "LBW and Leg byes are not applicable for this tournament."
     }
   ];
@@ -50,27 +50,27 @@ export default function RulesSection() {
   const col2Rules = [
     {
       id: "07",
-      icon: <UserX className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <UserX className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "A player who has played in one team is not allowed to play in another team."
     },
     {
       id: "08",
-      icon: <Ban className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <Ban className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "Chucking is strictly not allowed."
     },
     {
       id: "09",
-      icon: <FileBadge className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
-      text: "All players must produce a School ID card and Aadhaar card at the time of registration."
+      icon: <FileBadge className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
+      text: "All players must produce original School ID card and Aadhaar card at the time of registration/verification."
     },
     {
       id: "10",
-      icon: <Shirt className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <Shirt className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "All the players in the team need to wear the same colour sports uniform."
     },
     {
       id: "11",
-      icon: <Gavel className="w-5 h-5 text-navy shrink-0" strokeWidth={2.4} />,
+      icon: <Gavel className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
       text: "The organizer has full right to change the match rules according to the situation."
     }
   ];
@@ -85,7 +85,7 @@ export default function RulesSection() {
             RULES & <span>REGULATIONS</span>
           </h2>
           <p className="prizes-subtitle">
-            FAIR PLAY FOR A BETTER TOMORROW
+            FAIR PLAY & OFFICIAL TOURNAMENT GUIDELINES
           </p>
         </div>
 

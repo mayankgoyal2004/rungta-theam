@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Sun, Calendar, MapPin, Phone } from 'lucide-react';
+import { Users, Sun, Calendar, MapPin, Phone, Award, Shield } from 'lucide-react';
 
 export default function TournamentDetails() {
   return (
@@ -12,7 +12,7 @@ export default function TournamentDetails() {
             TOURNAMENT <span>DETAILS</span>
           </h2>
           <p className="prizes-subtitle">
-            ALL YOU NEED TO KNOW
+            OFFICIAL FORMAT, ROUNDS & SCHEDULE
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export default function TournamentDetails() {
               <Users className="td-icon text-red-600" strokeWidth={2.2} />
             </div>
             <h3 className="td-title">UNDER 18 YEARS</h3>
-            <p className="td-sub">Player Age Group</p>
+            <p className="td-sub">Inter-School Boys</p>
           </div>
 
           {/* 2. Day Matches */}
@@ -34,6 +34,7 @@ export default function TournamentDetails() {
               <Sun className="td-icon text-red-600" strokeWidth={2.2} />
             </div>
             <h3 className="td-title">DAY MATCHES ONLY</h3>
+            <p className="td-sub">Natural Daylight Play</p>
           </div>
 
           {/* 3. Tennis Ball */}
@@ -46,15 +47,19 @@ export default function TournamentDetails() {
               </svg>
             </div>
             <h3 className="td-title">PLAYED WITH TENNIS BALL</h3>
+            <p className="td-sub">New ball each inning</p>
           </div>
 
-          {/* 4. 6 Overs */}
-          <div className="td-card">
+          {/* 4. Match Overs & Rounds Format */}
+          <div className="td-card border-red-200 bg-red-50/20">
             <div className="td-icon-wrap">
-              <span className="td-icon-number">6</span>
+              <span className="td-icon-number text-red-600">6•8•10</span>
             </div>
-            <h3 className="td-title">6 OVERS</h3>
-            <p className="td-sub">Knockout Matches</p>
+            <h3 className="td-title">MATCH ROUNDS</h3>
+            <p className="td-sub text-slate-800 font-bold">
+              Prelims: <span className="text-red-600">6 Ov</span><br />
+              Semi: <span className="text-red-600">8 Ov</span> | Final: <span className="text-red-600">10 Ov</span>
+            </p>
           </div>
 
           {/* 5. Tournament Dates */}
@@ -78,7 +83,7 @@ export default function TournamentDetails() {
               RSR RCET Cricket Ground,<br />
               Bhilai
             </h3>
-            <p className="td-sub">Venue</p>
+            <p className="td-sub">Official Venue</p>
           </div>
 
           {/* 7. Registration Contact */}
@@ -91,7 +96,7 @@ export default function TournamentDetails() {
               <br />
               <a href="tel:9229111666" className="hover:text-red-600 transition-colors">9229 111 666</a>
             </h3>
-            <p className="td-sub">For Registration</p>
+            <p className="td-sub">Helpline & Registration</p>
           </div>
 
         </div>
