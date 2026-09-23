@@ -855,7 +855,7 @@ h1, h2, h3, h4, .font-heading {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   max-width: 1260px;
   margin: 0 auto;
 }
@@ -1569,17 +1569,64 @@ h1, h2, h3, h4, .font-heading {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(248, 197, 28, 0.25);
 }
 
-.pp-sch-icon-wrap {
-  height: 52px;
+.pp-sch-trophy-wrap {
+  height: 84px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.pp-sch-card:hover .pp-sch-icon-wrap {
-  transform: scale(1.1);
+.pp-sch-trophy-img {
+  max-height: 82px;
+  max-width: 82px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.6));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.pp-sch-card:hover .pp-sch-trophy-img {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.pp-sch-card-winner:hover {
+  border-color: rgba(251, 191, 36, 0.85);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(251, 191, 36, 0.32);
+}
+
+.pp-sch-card-winner:hover .pp-sch-trophy-img {
+  filter: drop-shadow(0 8px 20px rgba(251, 191, 36, 0.6));
+}
+
+.pp-sch-card-runner:hover {
+  border-color: rgba(226, 232, 240, 0.85);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(226, 232, 240, 0.32);
+}
+
+.pp-sch-card-runner:hover .pp-sch-trophy-img {
+  filter: drop-shadow(0 8px 20px rgba(226, 232, 240, 0.6));
+}
+
+.pp-sch-card-semi:hover {
+  border-color: rgba(251, 146, 60, 0.85);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(251, 146, 60, 0.32);
+}
+
+.pp-sch-card-semi:hover .pp-sch-trophy-img {
+  filter: drop-shadow(0 8px 20px rgba(251, 146, 60, 0.6));
+}
+
+.pp-sch-card-participant:hover {
+  border-color: rgba(56, 189, 248, 0.85);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.32);
+}
+
+.pp-sch-card-participant:hover .pp-sch-trophy-img {
+  filter: drop-shadow(0 8px 20px rgba(56, 189, 248, 0.6));
 }
 
 .pp-sch-title {
@@ -2471,9 +2518,6 @@ h1, h2, h3, h4, .font-heading {
   }
   .feature-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .hero-feature:nth-child(5) {
-    grid-column: span 2;
   }
   .section {
     padding: 60px 0;

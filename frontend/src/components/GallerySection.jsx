@@ -3,12 +3,12 @@ import React from 'react';
 export default function GallerySection() {
   const galleryImages = [
     {
-      url: "/gallery/DSC09033.JPG.jpeg",
-      title: "Match Action & Spirit"
+      url: "/gallery/rpl_gallery_1.jpeg",
+      title: "Match Action & Practice"
     },
     {
-      url: "/gallery/DSC09845.JPG.jpeg",
-      title: "Championship Moments"
+      url: "/gallery/rpl_gallery_2.jpeg",
+      title: "Cricket Camp & Match Moments"
     },
     {
       url: "/gallery/file_0000000085b88211955db56a354a66d1.png",

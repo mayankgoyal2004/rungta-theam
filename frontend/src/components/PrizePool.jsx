@@ -484,44 +484,56 @@ export default function PrizePool() {
           <div className="pp-sch-details-grid">
             
             {/* 1. WINNER PLAYER */}
-            <div className="pp-sch-card">
-              <div className="pp-sch-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-amber-400">
-                  <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H8v2h8v-2h-3v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
-                </svg>
+            <div className="pp-sch-card pp-sch-card-winner">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/gold-trophy.png"
+                  alt="Winner Gold Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
               </div>
               <h4 className="pp-sch-title">WINNER PLAYER</h4>
               <div className="pp-sch-amount">₹ 5,100</div>
             </div>
 
             {/* 2. RUNNER PLAYER */}
-            <div className="pp-sch-card">
-              <div className="pp-sch-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-slate-200">
-                  <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H8v2h8v-2h-3v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
-                </svg>
+            <div className="pp-sch-card pp-sch-card-runner">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/silver-trophy.png"
+                  alt="Runner Up Silver Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
               </div>
               <h4 className="pp-sch-title">RUNNER PLAYER</h4>
               <div className="pp-sch-amount">₹ 3,100</div>
             </div>
 
             {/* 3. SEMIFINALIST */}
-            <div className="pp-sch-card">
-              <div className="pp-sch-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-amber-600">
-                  <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H8v2h8v-2h-3v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
-                </svg>
+            <div className="pp-sch-card pp-sch-card-semi">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/bronze-trophy.png"
+                  alt="Semifinalist Bronze Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
               </div>
               <h4 className="pp-sch-title">SEMIFINALIST</h4>
               <div className="pp-sch-amount">₹ 2,100</div>
             </div>
 
             {/* 4. PARTICIPANT */}
-            <div className="pp-sch-card">
-              <div className="pp-sch-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-amber-400">
-                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-                </svg>
+            <div className="pp-sch-card pp-sch-card-participant">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/participant-trophy.png"
+                  alt="Participant Star Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
               </div>
               <h4 className="pp-sch-title">PARTICIPANT</h4>
               <div className="pp-sch-amount">₹ 1,100</div>

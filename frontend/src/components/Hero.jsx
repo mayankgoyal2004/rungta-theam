@@ -354,25 +354,7 @@ export default function Hero() {
       <div className="hero-features">
         <div className="feature-grid">
           
-          {/* 1. UPTO 32 TEAMS */}
-          <div className="hero-feature">
-            <div className="hero-feat-icon">
-              <svg viewBox="0 0 48 48" className="hero-feat-svg" fill="#f8c51c">
-                <circle cx="24" cy="14" r="5.5" />
-                <path d="M 16 31 C 16 26 19.5 22.5 24 22.5 C 28.5 22.5 32 26 32 31 Z" />
-                <circle cx="13" cy="18" r="4.2" opacity="0.9" />
-                <path d="M 6.5 31 C 6.5 27 9.5 24.5 13 24.5 C 14.8 24.5 16.4 25.2 17.5 26.5 C 16.8 27.8 16.5 29.3 16.5 31 Z" opacity="0.9" />
-                <circle cx="35" cy="18" r="4.2" opacity="0.9" />
-                <path d="M 31.5 31 C 31.5 29.3 31.2 27.8 30.5 26.5 C 31.6 25.2 33.2 24.5 35 24.5 C 38.5 24.5 41.5 27 41.5 31 Z" opacity="0.9" />
-              </svg>
-            </div>
-            <div className="hero-feat-text">
-              <strong className="hero-feat-main">Upto 32 Teams</strong>
-              <span className="hero-feat-sub">Expected</span>
-            </div>
-          </div>
-
-          {/* 2. DAY MATCHES */}
+          {/* 1. DAY MATCHES */}
           <div className="hero-feature">
             <div className="hero-feat-icon">
               <svg viewBox="0 0 48 48" className="hero-feat-svg" fill="#f8c51c">
