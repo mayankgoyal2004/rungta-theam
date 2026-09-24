@@ -1046,29 +1046,30 @@ h1, h2, h3, h4, .font-heading {
 
 .prize-grid-ref {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1080px;
+  margin: 32px auto 0;
 }
 
 .prize-card-ref {
   background: linear-gradient(180deg, #051c3c 0%, #031227 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  padding: 16px 12px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  padding: 24px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-  min-height: 195px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  min-height: 165px;
 }
 
 .prize-card-ref:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
 .prize-card-ref::before {
@@ -1077,26 +1078,41 @@ h1, h2, h3, h4, .font-heading {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 .winner-card {
-  border-color: rgba(248, 197, 28, 0.4);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3), 0 0 18px rgba(248, 197, 28, 0.15);
+  border-color: rgba(248, 197, 28, 0.5);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 22px rgba(248, 197, 28, 0.18);
+}
+
+.winner-card:hover {
+  border-color: rgba(248, 197, 28, 0.9);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5), 0 0 32px rgba(248, 197, 28, 0.35);
 }
 
 .runner-card {
-  border-color: rgba(203, 213, 225, 0.3);
+  border-color: rgba(203, 213, 225, 0.4);
+}
+
+.runner-card:hover {
+  border-color: rgba(226, 232, 240, 0.85);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5), 0 0 25px rgba(226, 232, 240, 0.25);
 }
 
 .bronze-card {
-  border-color: rgba(217, 119, 6, 0.3);
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+.bronze-card:hover {
+  border-color: rgba(251, 146, 60, 0.85);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5), 0 0 25px rgba(251, 146, 60, 0.25);
 }
 
 .trophy-img-wrap {
-  flex: 0 0 36%;
-  max-width: 95px;
+  flex: 0 0 38%;
+  max-width: 105px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1104,14 +1120,14 @@ h1, h2, h3, h4, .font-heading {
 
 .trophy-img {
   width: 100%;
-  height: 125px;
+  height: 130px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
   transition: transform 0.3s ease;
 }
 
 .prize-card-ref:hover .trophy-img {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .prize-info {
@@ -1127,101 +1143,37 @@ h1, h2, h3, h4, .font-heading {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 16px;
   font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.5px;
+  color: #cbd5e1;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   line-height: 1.1;
   white-space: nowrap;
+}
+
+.winner-card .prize-badge-title {
+  color: #fbbf24;
 }
 
 .prize-amount {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(28px, 2.2vw, 35px);
+  font-size: clamp(34px, 2.8vw, 44px);
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
-  margin: 3px 0 6px 0;
-  letter-spacing: 0.2px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  margin: 4px 0 6px 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
 }
 
-.scholarship-pill {
-  width: 100%;
-  background: linear-gradient(180deg, #ffcc00 0%, #e6a800 100%);
-  border-radius: 6px;
-  padding: 5px 4px;
-  text-align: center;
-  color: #041b38;
-  box-shadow: 0 4px 10px rgba(230, 168, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-sizing: border-box;
-}
-
-.sch-label {
-  font-size: 8.5px;
-  font-weight: 900;
-  letter-spacing: 0.3px;
-  display: block;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.sch-val {
+.prize-perk-badge {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 18px;
-  font-weight: 900;
-  display: block;
-  line-height: 1;
-  margin: 2px 0;
-}
-
-.sch-unit {
-  font-size: 8px;
-  font-weight: 800;
-  display: block;
-  opacity: 0.9;
-  line-height: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-}
-
-/* ENTRY CARD */
-.entry-card-ref {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 20px 14px;
-}
-
-.entry-ball-wrap {
-  flex: 0 0 auto;
-  margin-bottom: 6px;
-}
-
-.ball-img {
-  height: 65px;
-  width: 65px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
-}
-
-.entry-info {
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-
-.entry-info .prize-amount {
-  margin: 4px 0;
-}
-
-.entry-unit-text {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .pp-podium-footer-slogan {
@@ -1636,7 +1588,7 @@ h1, h2, h3, h4, .font-heading {
   color: #ffffff;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   line-height: 1.15;
 }
 
@@ -1648,6 +1600,308 @@ h1, h2, h3, h4, .font-heading {
   line-height: 1;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 6px;
+}
+
+.pp-sch-subheading {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.pp-sch-scope-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   DEDICATED ENTRY FEE SECTION
+========================================================= */
+.pp-entry-section {
+  background: linear-gradient(180deg, #020b18 0%, #041428 100%);
+  color: #ffffff;
+  padding: 70px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pp-entry-header {
+  margin-bottom: 32px;
+}
+
+.pp-entry-sub-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #f8c51c;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pp-entry-main-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(38px, 4.5vw, 52px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+}
+
+.pp-entry-main-title span {
+  color: #d71920;
+}
+
+.pp-entry-desc-sub {
+  font-size: 15px;
+  color: #94a3b8;
+  margin-top: 8px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.entry-hero-card {
+  max-width: 1040px;
+  margin: 0 auto;
+  background: rgba(3, 18, 42, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(248, 197, 28, 0.35);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(248, 197, 28, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.entry-hero-card:hover {
+  border-color: rgba(248, 197, 28, 0.65);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(248, 197, 28, 0.2);
+}
+
+.entry-hero-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  position: relative;
+  z-index: 2;
+}
+
+.entry-price-block {
+  background: linear-gradient(180deg, rgba(5, 28, 64, 0.95) 0%, rgba(2, 14, 32, 0.95) 100%);
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.entry-3d-ball-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.entry-3d-ball-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6));
+  animation: floatBall 4s ease-in-out infinite;
+}
+
+@keyframes floatBall {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+.entry-ball-badge {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #f8c51c;
+  background: rgba(248, 197, 28, 0.12);
+  border: 1px solid rgba(248, 197, 28, 0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.entry-pricing-tag {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin: 6px 0 4px;
+}
+
+.entry-price-currency {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #f8c51c;
+}
+
+.entry-price-number {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.entry-price-period {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #94a3b8;
+  margin-left: 4px;
+}
+
+.entry-squad-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.entry-perks-block {
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.entry-inclusions-heading {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #f8c51c;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.entry-perks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.entry-perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.entry-perk-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.entry-perk-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.entry-perk-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-perk-text strong {
+  font-size: 13.5px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.entry-perk-text span {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.entry-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.entry-payment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-pay-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #f8c51c;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.entry-pay-methods {
+  font-size: 13px;
+  color: #cbd5e1;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.entry-cta-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(215, 25, 32, 0.4);
 }
 
 /* RESPONSIVE PRIZE POOL */
@@ -1657,6 +1911,25 @@ h1, h2, h3, h4, .font-heading {
   }
   .pp-sch-details-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .entry-hero-content {
+    grid-template-columns: 1fr;
+  }
+  .entry-price-block {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 28px 20px;
+  }
+  .entry-perks-grid {
+    grid-template-columns: 1fr;
+  }
+  .entry-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .entry-cta-btn {
+    justify-content: center;
   }
 }
 
@@ -2437,7 +2710,7 @@ h1, h2, h3, h4, .font-heading {
   }
   .prize-grid,
   .prize-grid-ref {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

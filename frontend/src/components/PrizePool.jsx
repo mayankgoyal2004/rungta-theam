@@ -5,7 +5,7 @@ export default function PrizePool() {
     <div className="prizepool-master-wrapper" id="prizes">
       
       {/* =========================================================
-          SECTION 1: TOP 4 CHAMPIONSHIP CARDS (PREVIOUS FAVORITE)
+          SECTION 1: PRIZES & RECOGNITION (3 CHAMPIONSHIP CASH PRIZES)
       ========================================================= */}
       <section className="prizes-section">
         <div className="container-custom">
@@ -16,11 +16,11 @@ export default function PrizePool() {
               PRIZES & <span>RECOGNITION</span>
             </h2>
             <p className="prizes-subtitle">
-              TOTAL CASH PRIZES & SCHOLARSHIPS WORTH LAKHS
+              TOTAL CASH PRIZES WORTH ₹83,000 & OFFICIAL CHAMPIONSHIP TROPHIES
             </p>
           </div>
 
-          {/* 4 CHAMPIONSHIP CARDS */}
+          {/* 3 CHAMPIONSHIP CARDS (GOLD, SILVER, BRONZE) */}
           <div className="prize-grid-ref">
             
             {/* 1. WINNER */}
@@ -30,18 +30,14 @@ export default function PrizePool() {
                   src="/images/gold-trophy.png"
                   alt="Winner Gold Trophy"
                   className="trophy-img trophy-gold"
+                  loading="lazy"
                 />
               </div>
 
               <div className="prize-info">
-                <span className="prize-badge-title">WINNER</span>
+                <span className="prize-badge-title">CHAMPION / WINNER</span>
                 <h3 className="prize-amount">₹51,000</h3>
-
-                <div className="scholarship-pill">
-                  <span className="sch-label">SCHOLARSHIP WORTH</span>
-                  <strong className="sch-val">₹5,100</strong>
-                  <span className="sch-unit">PER PLAYER</span>
-                </div>
+                <span className="prize-perk-badge">Grand Trophy + Medals</span>
               </div>
             </div>
 
@@ -52,18 +48,14 @@ export default function PrizePool() {
                   src="/images/silver-trophy.png"
                   alt="Runner Up Silver Trophy"
                   className="trophy-img trophy-silver"
+                  loading="lazy"
                 />
               </div>
 
               <div className="prize-info">
                 <span className="prize-badge-title">RUNNER UP</span>
                 <h3 className="prize-amount">₹21,000</h3>
-
-                <div className="scholarship-pill">
-                  <span className="sch-label">SCHOLARSHIP WORTH</span>
-                  <strong className="sch-val">₹3,100</strong>
-                  <span className="sch-unit">PER PLAYER</span>
-                </div>
+                <span className="prize-perk-badge">Silver Trophy + Medals</span>
               </div>
             </div>
 
@@ -74,35 +66,14 @@ export default function PrizePool() {
                   src="/images/bronze-trophy.png"
                   alt="Second Runner Up Trophy"
                   className="trophy-img trophy-bronze"
+                  loading="lazy"
                 />
               </div>
 
               <div className="prize-info">
                 <span className="prize-badge-title">2ND RUNNER UP</span>
                 <h3 className="prize-amount">₹11,000</h3>
-
-                <div className="scholarship-pill">
-                  <span className="sch-label">SCHOLARSHIP WORTH</span>
-                  <strong className="sch-val">₹2,100</strong>
-                  <span className="sch-unit">PER PLAYER</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 4. ENTRY FEES */}
-            <div className="prize-card-ref entry-card-ref">
-              <div className="trophy-img-wrap entry-ball-wrap">
-                <img
-                  src="/images/cricket-ball.png"
-                  alt="Tournament Cricket Ball"
-                  className="trophy-img ball-img"
-                />
-              </div>
-
-              <div className="prize-info entry-info">
-                <span className="prize-badge-title">ENTRY FEES</span>
-                <h3 className="prize-amount">₹500</h3>
-                <span className="entry-unit-text">PER TEAM</span>
+                <span className="prize-perk-badge">Bronze Trophy + Medals</span>
               </div>
             </div>
 
@@ -298,7 +269,224 @@ export default function PrizePool() {
 
 
       {/* =========================================================
-          SECTION 3: TOURNAMENT FORMAT (EXACT REFERENCE DESIGN)
+          SECTION 3: SCHOLARSHIP DETAILS (PLACED AFTER SPECIAL AWARDS)
+      ========================================================= */}
+      <section className="pp-section pp-scholarship-section" id="scholarships">
+        <div className="container-custom">
+          
+          {/* HEADER */}
+          <div className="pp-awards-header center">
+            <span className="pp-awards-sub-label">
+              SUPPORTING TALENT, BUILDING FUTURES
+            </span>
+            <h2 className="pp-awards-main-title">
+              SCHOLARSHIP DETAILS
+            </h2>
+            <p className="pp-sch-subheading">
+              EDUCATIONAL SCHOLARSHIPS AWARDED TO EVERY DESERVING CRICKETER
+            </p>
+          </div>
+
+          {/* 4-CARD SCHOLARSHIP GRID */}
+          <div className="pp-sch-details-grid">
+            
+            {/* 1. WINNER PLAYER */}
+            <div className="pp-sch-card pp-sch-card-winner">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/gold-trophy.png"
+                  alt="Winner Gold Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="pp-sch-title">WINNER PLAYER</h4>
+              <div className="pp-sch-amount">₹ 5,100</div>
+              <span className="pp-sch-scope-text">Per Player Scholarship</span>
+            </div>
+
+            {/* 2. RUNNER PLAYER */}
+            <div className="pp-sch-card pp-sch-card-runner">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/silver-trophy.png"
+                  alt="Runner Up Silver Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="pp-sch-title">RUNNER PLAYER</h4>
+              <div className="pp-sch-amount">₹ 3,100</div>
+              <span className="pp-sch-scope-text">Per Player Scholarship</span>
+            </div>
+
+            {/* 3. SEMIFINALIST */}
+            <div className="pp-sch-card pp-sch-card-semi">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/bronze-trophy.png"
+                  alt="Semifinalist Bronze Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="pp-sch-title">SEMIFINALIST</h4>
+              <div className="pp-sch-amount">₹ 2,100</div>
+              <span className="pp-sch-scope-text">Per Player Scholarship</span>
+            </div>
+
+            {/* 4. PARTICIPANT */}
+            <div className="pp-sch-card pp-sch-card-participant">
+              <div className="pp-sch-trophy-wrap">
+                <img
+                  src="/images/participant-trophy.png"
+                  alt="Participant Star Trophy"
+                  className="pp-sch-trophy-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="pp-sch-title">PARTICIPANT</h4>
+              <div className="pp-sch-amount">₹ 1,100</div>
+              <span className="pp-sch-scope-text">Per Player Scholarship</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          SECTION 4: TOURNAMENT ENTRY FEE (DEDICATED SECTION)
+      ========================================================= */}
+      <section className="pp-section pp-entry-section" id="entry-fee">
+        <div className="container-custom">
+          
+          {/* HEADER */}
+          <div className="pp-entry-header center">
+            <span className="pp-entry-sub-label">
+              AFFORDABLE & ACCESSIBLE PARTICIPATION
+            </span>
+            <h2 className="pp-entry-main-title">
+              TOURNAMENT <span>ENTRY FEE</span>
+            </h2>
+            <p className="pp-entry-desc-sub">
+              Nominal registration fee covering official tournament ball, turf infrastructure, refreshments & player kits
+            </p>
+          </div>
+
+          {/* DEDICATED ENTRY HERO CARD */}
+          <div className="entry-hero-card">
+            <div className="entry-hero-content">
+              
+              {/* LEFT / TOP: 3D BALL & PRICE BADGE */}
+              <div className="entry-price-block">
+                <div className="entry-3d-ball-wrap">
+                  <img
+                    src="/images/cricket-ball.png"
+                    alt="Official Tournament Cricket Ball"
+                    className="entry-3d-ball-img"
+                    loading="lazy"
+                  />
+                  <span className="entry-ball-badge">HEAVY TENNIS BALL</span>
+                </div>
+                
+                <div className="entry-pricing-tag">
+                  <span className="entry-price-currency">₹</span>
+                  <span className="entry-price-number">500</span>
+                  <span className="entry-price-period">/ TEAM</span>
+                </div>
+
+                <div className="entry-squad-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>Squad of 11 to 15 Players</span>
+                </div>
+              </div>
+
+              {/* RIGHT / MAIN: PERKS & INCLUSIONS GRID */}
+              <div className="entry-perks-block">
+                <h3 className="entry-inclusions-heading">WHAT'S INCLUDED IN ENTRY FEE</h3>
+                
+                <div className="entry-perks-grid">
+                  <div className="entry-perk-item">
+                    <div className="entry-perk-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="w-4 h-4">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div className="entry-perk-text">
+                      <strong>Brand-New Match Ball Every Innings</strong>
+                      <span>Official premium heavy-duty tennis ball provided by match officials</span>
+                    </div>
+                  </div>
+
+                  <div className="entry-perk-item">
+                    <div className="entry-perk-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="w-4 h-4">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div className="entry-perk-text">
+                      <strong>Professional Stadium Turf & Nets</strong>
+                      <span>Exclusive match access to RSR RCET stadium pitch & warmup nets</span>
+                    </div>
+                  </div>
+
+                  <div className="entry-perk-item">
+                    <div className="entry-perk-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="w-4 h-4">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div className="entry-perk-text">
+                      <strong>Official Certificates of Athletic Honor</strong>
+                      <span>Verified state-level tournament certificates for all players</span>
+                    </div>
+                  </div>
+
+                  <div className="entry-perk-item">
+                    <div className="entry-perk-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="w-4 h-4">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div className="entry-perk-text">
+                      <strong>Hydration, Medical & Commentary Support</strong>
+                      <span>On-ground medical team, energy drinks, certified umpires & commentary</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BOTTOM ACTION BAR */}
+                <div className="entry-action-bar">
+                  <div className="entry-payment-info">
+                    <span className="entry-pay-label">PAYMENT MODES ACCEPTED:</span>
+                    <span className="entry-pay-methods">UPI (GPay / PhonePe / Paytm / BHIM) • Cash at Campus Sports Desk</span>
+                  </div>
+                  <a href="#hero-register" className="btn btn-primary entry-cta-btn">
+                    <span>REGISTER YOUR SCHOOL TEAM</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          SECTION 5: TOURNAMENT FORMAT (EXACT REFERENCE DESIGN)
       ========================================================= */}
       <section className="pp-section pp-format-section" id="tournament">
         <div className="container-custom">
@@ -456,87 +644,6 @@ export default function PrizePool() {
               <p className="pp-tf-desc-text">
                 The ultimate battle for the RPL 5.0 trophy
               </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          SECTION 4: SCHOLARSHIP DETAILS (NAVY BLUE BACKGROUND)
-      ========================================================= */}
-      <section className="pp-section pp-scholarship-section">
-        <div className="container-custom">
-          
-          {/* HEADER */}
-          <div className="pp-awards-header center">
-            <span className="pp-awards-sub-label">
-              SUPPORTING TALENT, BUILDING FUTURES
-            </span>
-            <h2 className="pp-awards-main-title">
-              SCHOLARSHIP DETAILS
-            </h2>
-          </div>
-
-          {/* 4-CARD SCHOLARSHIP GRID */}
-          <div className="pp-sch-details-grid">
-            
-            {/* 1. WINNER PLAYER */}
-            <div className="pp-sch-card pp-sch-card-winner">
-              <div className="pp-sch-trophy-wrap">
-                <img
-                  src="/images/gold-trophy.png"
-                  alt="Winner Gold Trophy"
-                  className="pp-sch-trophy-img"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="pp-sch-title">WINNER PLAYER</h4>
-              <div className="pp-sch-amount">₹ 5,100</div>
-            </div>
-
-            {/* 2. RUNNER PLAYER */}
-            <div className="pp-sch-card pp-sch-card-runner">
-              <div className="pp-sch-trophy-wrap">
-                <img
-                  src="/images/silver-trophy.png"
-                  alt="Runner Up Silver Trophy"
-                  className="pp-sch-trophy-img"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="pp-sch-title">RUNNER PLAYER</h4>
-              <div className="pp-sch-amount">₹ 3,100</div>
-            </div>
-
-            {/* 3. SEMIFINALIST */}
-            <div className="pp-sch-card pp-sch-card-semi">
-              <div className="pp-sch-trophy-wrap">
-                <img
-                  src="/images/bronze-trophy.png"
-                  alt="Semifinalist Bronze Trophy"
-                  className="pp-sch-trophy-img"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="pp-sch-title">SEMIFINALIST</h4>
-              <div className="pp-sch-amount">₹ 2,100</div>
-            </div>
-
-            {/* 4. PARTICIPANT */}
-            <div className="pp-sch-card pp-sch-card-participant">
-              <div className="pp-sch-trophy-wrap">
-                <img
-                  src="/images/participant-trophy.png"
-                  alt="Participant Star Trophy"
-                  className="pp-sch-trophy-img"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="pp-sch-title">PARTICIPANT</h4>
-              <div className="pp-sch-amount">₹ 1,100</div>
             </div>
 
           </div>

@@ -107,6 +107,18 @@ export default function Header() {
               Prizes
             </a>
             <a 
+              href="#scholarships" 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Scholarships
+            </a>
+            <a 
+              href="#entry-fee" 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Entry Fee
+            </a>
+            <a 
               href="#tournament" 
               onClick={() => setMobileMenuOpen(false)}
             >

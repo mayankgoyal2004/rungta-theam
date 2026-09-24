@@ -24,8 +24,10 @@ export default function Footer() {
             <h3 className="footer-heading">QUICK LINKS</h3>
             <ul className="footer-nav-list">
               <li><a href="#home">Home</a></li>
-              <li><a href="#tournament">Tournament</a></li>
               <li><a href="#prizes">Prizes</a></li>
+              <li><a href="#scholarships">Scholarships</a></li>
+              <li><a href="#entry-fee">Entry Fee</a></li>
+              <li><a href="#tournament">Tournament</a></li>
               <li><a href="#rules">Rules</a></li>
               <li><a href="#gallery">Gallery</a></li>
               <li><a href="#contact">Contact</a></li>
