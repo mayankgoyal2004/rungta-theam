@@ -75,12 +75,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 5. SCRIPT TAGLINE: Cricket Beyond Classrooms */}
+          {/* 5. SCRIPT TAGLINE: Where Every Run Writes History */}
           <div className="footer-tagline-col">
             <div className="footer-script-wrap">
-              <span className="footer-script-line1">Cricket</span>
-              <span className="footer-script-line2">Beyond</span>
-              <span className="footer-script-line3">Classrooms</span>
+              <span className="footer-script-line1">Where</span>
+              <span className="footer-script-line2">Every Run</span>
+              <span className="footer-script-line3">Writes History</span>
             </div>
           </div>
 

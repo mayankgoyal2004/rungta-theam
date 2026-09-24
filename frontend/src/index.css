@@ -2608,29 +2608,29 @@ h1, h2, h3, h4, .font-heading {
   display: flex;
   flex-direction: column;
   font-family: "Caveat", cursive;
-  font-size: 32px;
-  line-height: 0.9;
+  font-size: 28px;
+  line-height: 0.95;
   color: #f1f5f9;
-  transform: rotate(-7deg);
+  transform: rotate(-6deg);
   text-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
   user-select: none;
 }
 
 .footer-script-line1 {
-  font-size: 36px;
-  color: #ffffff;
+  font-size: 32px;
+  color: #f8c51c;
 }
 
 .footer-script-line2 {
-  font-size: 30px;
-  color: #e2e8f0;
+  font-size: 27px;
+  color: #ffffff;
   padding-left: 6px;
 }
 
 .footer-script-line3 {
-  font-size: 34px;
-  color: #f8fafc;
-  padding-left: 12px;
+  font-size: 30px;
+  color: #e2e8f0;
+  padding-left: 10px;
 }
 
 .footer-bottom-ref {

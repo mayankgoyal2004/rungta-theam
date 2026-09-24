@@ -237,7 +237,7 @@ export const RULES_LIST = [
   {
     id: "10",
     title: "Uniform Sports Kit",
-    desc: "All playing members of the team must wear identical same-colour sports uniforms & proper sports shoes."
+    desc: "All participants are required to wear team sports uniforms and the necessary sports gear throughout the event."
   },
   {
     id: "11",

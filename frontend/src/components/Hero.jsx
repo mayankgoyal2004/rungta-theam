@@ -169,10 +169,10 @@ export default function Hero() {
               <span>Explore Prizes & Format</span>
               <span className="btn-arrow">↓</span>
             </a>
-            <a href="tel:9229111555" className="hero-quick-call">
+            <div className="hero-quick-call">
               <PhoneCall className="w-4 h-4 text-amber-400" />
-              <span>Helpline: <strong>9229 111 555</strong></span>
-            </a>
+              <span>Helpline: <a href="tel:9229111555" className="hover:text-amber-300"><strong>9229 111 555</strong></a> / <a href="tel:9229111666" className="hover:text-amber-300"><strong>9229 111 666</strong></a></span>
+            </div>
           </div>
 
         </div>

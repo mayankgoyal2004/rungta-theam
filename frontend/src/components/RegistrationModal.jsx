@@ -251,7 +251,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
               </button>
 
               <p className="text-center text-[11px] text-slate-500 mt-1">
-                Need immediate help? Call RPL Helpline: <a href="tel:9229111555" className="text-red-600 font-bold hover:underline">9229 111 555</a>
+                Need immediate help? Call RPL Helpline: <a href="tel:9229111555" className="text-red-600 font-bold hover:underline">9229 111 555</a> / <a href="tel:9229111666" className="text-red-600 font-bold hover:underline">9229 111 666</a>
               </p>
 
             </form>

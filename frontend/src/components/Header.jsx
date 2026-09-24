@@ -45,13 +45,12 @@ export default function Header() {
             </span>
 
             <div className="flex items-center gap-3 border-l border-white/20 pl-4">
-              <a
-                href="tel:9229111555"
-                className="flex items-center gap-1.5 text-amber-400 font-bold hover:text-white transition-colors"
-              >
-                <Phone className="w-3 h-3 text-red-400" />
-                <span>9229 111 555</span>
-              </a>
+              <div className="flex items-center gap-1.5 text-amber-400 font-bold">
+                <Phone className="w-3.5 h-3.5 text-red-400 shrink-0" />
+                <a href="tel:9229111555" className="hover:text-white transition-colors">9229 111 555</a>
+                <span className="text-white/40">,</span>
+                <a href="tel:9229111666" className="hover:text-white transition-colors">9229 111 666</a>
+              </div>
               <span className="text-white/20 hidden sm:inline">|</span>
               <a
                 href="https://www.rungtacolleges.com"

@@ -66,7 +66,7 @@ export default function RulesSection() {
     {
       id: "10",
       icon: <Shirt className="w-5 h-5 text-[#061b38] shrink-0" strokeWidth={2.4} />,
-      text: "All the players in the team need to wear the same colour sports uniform."
+      text: "All participants are required to wear team sports uniforms and the necessary sports gear throughout the event."
     },
     {
       id: "11",
