@@ -171,7 +171,8 @@ app.get('/api/health', async (req, res) => {
   res.json({
     status: 'ok',
     server: 'RPL 5.0 Dedicated Backend (Express + Prisma)',
-    database: dbCheck.connected ? 'PostgreSQL (Prisma Connected)' : 'Local File Persistence (Active)',
+    database: dbCheck.connected ? 'PostgreSQL (Prisma Connected)' : 'PostgreSQL Disconnected',
+    error: dbCheck.error || null,
     timestamp: new Date().toISOString()
   });
 });
