@@ -177,12 +177,12 @@ app.get('/api/health', async (req, res) => {
 });
 
 /* =========================================================
-   3. GET ALL LEADS (SEARCH & PAGINATION)
+   3. GET ALL LEADS (SEARCH, FILTER BY DATE & PAGINATION)
 ========================================================= */
 app.get('/api/leads', requireAdminAuth, async (req, res) => {
   try {
-    const { q, status, page, limit } = req.query;
-    const result = await getAllLeads({ q, status, page, limit });
+    const { q, status, city, startDate, endDate, page, limit } = req.query;
+    const result = await getAllLeads({ q, status, city, startDate, endDate, page, limit });
 
     res.json({
       success: true,
@@ -195,7 +195,8 @@ app.get('/api/leads', requireAdminAuth, async (req, res) => {
         totalPages: result.totalPages,
         hasPrevPage: result.page > 1,
         hasNextPage: result.page < result.totalPages
-      }
+      },
+      dateFilter: result.dateFilter
     });
   } catch (error) {
     console.error('Error fetching leads:', error);
@@ -305,7 +306,8 @@ app.get('/api/stats', requireAdminAuth, async (req, res) => {
 ========================================================= */
 app.get('/api/leads/export-csv', requireAdminAuth, async (req, res) => {
   try {
-    const { leads } = await getAllLeads({ limit: 'all' });
+    const { q, status, city, startDate, endDate } = req.query;
+    const { leads } = await getAllLeads({ q, status, city, startDate, endDate, limit: 'all' });
 
     const headers = ['Lead ID', 'Full Name', 'Phone', 'School Name', 'City', 'Role', 'Status', 'Notes', 'Registration Date'];
     const rows = leads.map((lead) => [
@@ -322,10 +324,19 @@ app.get('/api/leads/export-csv', requireAdminAuth, async (req, res) => {
 
     const csvContent = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
 
+    let dateSuffix = new Date().toISOString().slice(0, 10);
+    if (startDate && endDate) {
+      dateSuffix = `${startDate}_to_${endDate}`;
+    } else if (startDate) {
+      dateSuffix = `from_${startDate}`;
+    } else if (endDate) {
+      dateSuffix = `until_${endDate}`;
+    }
+
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader(
       'Content-Disposition',
-      `attachment; filename="RPL_5.0_Leads_${new Date().toISOString().slice(0, 10)}.csv"`
+      `attachment; filename="RPL_5.0_Leads_${dateSuffix}.csv"`
     );
     res.send(csvContent);
   } catch (error) {

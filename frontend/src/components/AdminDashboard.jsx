@@ -33,7 +33,8 @@ import {
   Sun,
   Moon,
   KeyRound,
-  ShieldCheck
+  ShieldCheck,
+  RotateCcw
 } from 'lucide-react';
 import { getApiUrl } from '../config/api';
 
@@ -100,6 +101,116 @@ export default function AdminDashboard({ onBackToHome }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('ALL');
   const [selectedCity, setSelectedCity] = useState('ALL');
+
+  // Date Filtration State
+  const [datePreset, setDatePreset] = useState('ALL'); // 'ALL' | 'TODAY' | 'YESTERDAY' | 'LAST_7_DAYS' | 'THIS_MONTH' | 'CUSTOM'
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [dateValidationError, setDateValidationError] = useState('');
+
+  // Date Calculation Helpers (local timezone YYYY-MM-DD)
+  const getLocalDateStr = (d) => {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const getTodayStr = () => getLocalDateStr(new Date());
+
+  const getYesterdayStr = () => {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    return getLocalDateStr(d);
+  };
+
+  const getDaysAgoStr = (days) => {
+    const d = new Date();
+    d.setDate(d.getDate() - days);
+    return getLocalDateStr(d);
+  };
+
+  const getMonthStartStr = () => {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    return `${year}-${month}-01`;
+  };
+
+  const handleDatePresetChange = (preset) => {
+    setDatePreset(preset);
+    setDateValidationError('');
+    setCurrentPage(1);
+
+    const today = getTodayStr();
+    if (preset === 'TODAY') {
+      setStartDate(today);
+      setEndDate(today);
+    } else if (preset === 'YESTERDAY') {
+      const yest = getYesterdayStr();
+      setStartDate(yest);
+      setEndDate(yest);
+    } else if (preset === 'LAST_7_DAYS') {
+      setStartDate(getDaysAgoStr(6));
+      setEndDate(today);
+    } else if (preset === 'THIS_MONTH') {
+      setStartDate(getMonthStartStr());
+      setEndDate(today);
+    } else if (preset === 'ALL') {
+      setStartDate('');
+      setEndDate('');
+    }
+  };
+
+  const handleStartDateChange = (val) => {
+    setStartDate(val);
+    setDatePreset(val || endDate ? 'CUSTOM' : 'ALL');
+    setCurrentPage(1);
+    if (val && endDate && val > endDate) {
+      setDateValidationError('Note: From date is after To date. Range will be auto-adjusted.');
+    } else {
+      setDateValidationError('');
+    }
+  };
+
+  const handleEndDateChange = (val) => {
+    setEndDate(val);
+    setDatePreset(startDate || val ? 'CUSTOM' : 'ALL');
+    setCurrentPage(1);
+    if (startDate && val && startDate > val) {
+      setDateValidationError('Note: To date is before From date. Range will be auto-adjusted.');
+    } else {
+      setDateValidationError('');
+    }
+  };
+
+  const handleClearDateFilter = () => {
+    setDatePreset('ALL');
+    setStartDate('');
+    setEndDate('');
+    setDateValidationError('');
+    setCurrentPage(1);
+  };
+
+  const handleResetAllFilters = () => {
+    setSearchQuery('');
+    setSelectedStatus('ALL');
+    setSelectedCity('ALL');
+    setDatePreset('ALL');
+    setStartDate('');
+    setEndDate('');
+    setDateValidationError('');
+    setCurrentPage(1);
+  };
+
+  const isAnyFilterActive = Boolean(
+    searchQuery ||
+    selectedStatus !== 'ALL' ||
+    selectedCity !== 'ALL' ||
+    startDate ||
+    endDate ||
+    datePreset !== 'ALL'
+  );
 
   // Modals
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -236,6 +347,11 @@ export default function AdminDashboard({ onBackToHome }) {
     setCurrentPage(1);
   };
 
+  const handleCityChangeFilter = (city) => {
+    setSelectedCity(city);
+    setCurrentPage(1);
+  };
+
   const handlePageSizeChange = (newSize) => {
     setPageSize(newSize);
     setCurrentPage(1);
@@ -248,8 +364,11 @@ export default function AdminDashboard({ onBackToHome }) {
     setError(null);
     try {
       const limitParam = pageSize === -1 ? 'all' : pageSize;
+      const cityParam = selectedCity !== 'ALL' ? `&city=${encodeURIComponent(selectedCity)}` : '';
+      const dateParams = `${startDate ? `&startDate=${encodeURIComponent(startDate)}` : ''}${endDate ? `&endDate=${encodeURIComponent(endDate)}` : ''}`;
+
       const [leadsRes, statsRes] = await Promise.all([
-        fetch(getApiUrl(`/api/leads?q=${encodeURIComponent(searchQuery)}&status=${selectedStatus}&page=${currentPage}&limit=${limitParam}`), {
+        fetch(getApiUrl(`/api/leads?q=${encodeURIComponent(searchQuery)}&status=${selectedStatus}${cityParam}${dateParams}&page=${currentPage}&limit=${limitParam}`), {
           headers: { 'Authorization': `Bearer ${adminToken}` }
         }),
         fetch(getApiUrl('/api/stats'), {
@@ -289,7 +408,7 @@ export default function AdminDashboard({ onBackToHome }) {
     if (isAuthenticated && adminToken) {
       fetchDashboardData();
     }
-  }, [isAuthenticated, adminToken, searchQuery, selectedStatus, currentPage, pageSize]);
+  }, [isAuthenticated, adminToken, searchQuery, selectedStatus, selectedCity, startDate, endDate, currentPage, pageSize]);
 
   // Update Status (Authenticated)
   const handleStatusChange = async (leadId, newStatus) => {
@@ -415,9 +534,17 @@ export default function AdminDashboard({ onBackToHome }) {
     }
   };
 
-  // Export CSV (Authenticated via token query)
+  // Export CSV (Filtered & Authenticated via token query)
   const handleExportCSV = () => {
-    window.open(getApiUrl(`/api/leads/export-csv?token=${encodeURIComponent(adminToken)}`), '_blank');
+    const cityParam = selectedCity !== 'ALL' ? `&city=${encodeURIComponent(selectedCity)}` : '';
+    const dateParams = `${startDate ? `&startDate=${encodeURIComponent(startDate)}` : ''}${endDate ? `&endDate=${encodeURIComponent(endDate)}` : ''}`;
+    const statusParam = selectedStatus !== 'ALL' ? `&status=${encodeURIComponent(selectedStatus)}` : '';
+    const queryParam = searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : '';
+
+    window.open(
+      getApiUrl(`/api/leads/export-csv?token=${encodeURIComponent(adminToken)}${queryParam}${statusParam}${cityParam}${dateParams}`),
+      '_blank'
+    );
   };
 
   // WhatsApp quick link
@@ -661,65 +788,121 @@ export default function AdminDashboard({ onBackToHome }) {
           </div>
         )}
 
-        {/* TOOLBAR: SEARCH & STATUS TABS */}
+        {/* TOOLBAR: SEARCH, STATUS TABS & DATE FILTRATION */}
         <div className="admin-toolbar-card">
           
-          <div className="admin-search-wrap">
-            <Search className="admin-search-icon" />
-            <input
-              type="text"
-              placeholder="Search by school, contact name, phone, or city..."
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="admin-search-input"
-            />
-            {searchQuery && (
-              <button onClick={() => handleSearchChange('')} className="admin-search-clear">
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-
-          {/* STATUS TABS */}
-          <div className="admin-status-tabs">
-            {[
-              { id: 'ALL', label: 'All Leads' },
-              { id: 'NEW', label: 'New' },
-              { id: 'CONTACTED', label: 'Contacted' },
-              { id: 'CONFIRMED', label: 'Confirmed' },
-              { id: 'PAID', label: 'Paid' },
-              { id: 'CANCELLED', label: 'Cancelled' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleStatusChangeFilter(tab.id)}
-                className={`admin-status-tab ${selectedStatus === tab.id ? 'active' : ''}`}
-              >
-                <span>{tab.label}</span>
-              </button>
-            ))}
-          </div>
-
-        </div>
-
-        {/* LEADS DATA TABLE */}
-        <div className="admin-table-card">
-          <div className="admin-table-header-row">
-            <div className="flex items-center gap-2">
-              <h3 className="admin-table-title">Registered Leads</h3>
-              <span className="admin-table-count">({pagination.totalRecords} total records)</span>
+          {/* ROW 1: SEARCH & STATUS TABS */}
+          <div className="admin-toolbar-primary">
+            <div className="admin-search-wrap">
+              <Search className="admin-search-icon" />
+              <input
+                type="text"
+                placeholder="Search by school, contact name, phone, or city..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="admin-search-input"
+              />
+              {searchQuery && (
+                <button onClick={() => handleSearchChange('')} className="admin-search-clear" title="Clear Search">
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
             </div>
+
+            {/* STATUS TABS */}
+            <div className="admin-status-tabs">
+              {[
+                { id: 'ALL', label: 'All Leads' },
+                { id: 'NEW', label: 'New' },
+                { id: 'CONTACTED', label: 'Contacted' },
+                { id: 'CONFIRMED', label: 'Confirmed' },
+                { id: 'PAID', label: 'Paid' },
+                { id: 'CANCELLED', label: 'Cancelled' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => handleStatusChangeFilter(tab.id)}
+                  className={`admin-status-tab ${selectedStatus === tab.id ? 'active' : ''}`}
+                >
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ROW 2: DATE VISE FILTRATION & ACTIONS */}
+          <div className="admin-toolbar-secondary">
             
-            {/* Quick City filter */}
-            {uniqueCities.length > 1 && (
-              <div className="flex items-center gap-2 text-xs">
-                <span className="text-slate-400">City:</span>
+            {/* Date Preset Buttons */}
+            <div className="admin-date-presets-wrap">
+              <div className="flex items-center gap-1 text-xs font-semibold text-slate-400">
+                <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                <span>Date:</span>
+              </div>
+
+              <div className="admin-date-preset-buttons">
+                {[
+                  { id: 'ALL', label: 'All Time' },
+                  { id: 'TODAY', label: 'Today' },
+                  { id: 'YESTERDAY', label: 'Yesterday' },
+                  { id: 'LAST_7_DAYS', label: 'Last 7 Days' },
+                  { id: 'THIS_MONTH', label: 'This Month' }
+                ].map((preset) => (
+                  <button
+                    key={preset.id}
+                    onClick={() => handleDatePresetChange(preset.id)}
+                    className={`admin-date-preset-btn ${datePreset === preset.id ? 'active' : ''}`}
+                  >
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Custom Date Range Picker */}
+            <div className="admin-date-custom-pickers">
+              <div className="admin-date-input-field">
+                <span className="admin-date-label">From</span>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => handleStartDateChange(e.target.value)}
+                  className="admin-date-picker-input"
+                  title="Filter leads registered from this date"
+                />
+              </div>
+
+              <span className="text-slate-500 text-xs font-bold">to</span>
+
+              <div className="admin-date-input-field">
+                <span className="admin-date-label">To</span>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => handleEndDateChange(e.target.value)}
+                  className="admin-date-picker-input"
+                  title="Filter leads registered up to this date"
+                />
+              </div>
+
+              {(startDate || endDate) && (
+                <button
+                  onClick={handleClearDateFilter}
+                  className="admin-date-clear-icon-btn"
+                  title="Clear Date Range"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+
+            {/* City Dropdown & Reset Filters in secondary bar */}
+            <div className="admin-toolbar-end-actions">
+              <div className="flex items-center gap-1.5 text-xs">
+                <MapPin className="w-3.5 h-3.5 text-slate-400" />
                 <select
                   value={selectedCity}
-                  onChange={(e) => {
-                    setSelectedCity(e.target.value);
-                    setCurrentPage(1);
-                  }}
+                  onChange={(e) => handleCityChangeFilter(e.target.value)}
                   className="admin-select-sm"
                 >
                   <option value="ALL">All Cities</option>
@@ -728,7 +911,64 @@ export default function AdminDashboard({ onBackToHome }) {
                   ))}
                 </select>
               </div>
-            )}
+
+              {isAnyFilterActive && (
+                <button
+                  onClick={handleResetAllFilters}
+                  className="admin-btn-reset-filters"
+                  title="Reset all search, status, city & date filters"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Filters</span>
+                </button>
+              )}
+            </div>
+
+          </div>
+
+          {/* Validation Alert if Date logic needs notice */}
+          {dateValidationError && (
+            <div className="admin-date-validation-notice">
+              <AlertCircle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>{dateValidationError}</span>
+            </div>
+          )}
+
+        </div>
+
+        {/* LEADS DATA TABLE */}
+        <div className="admin-table-card">
+          <div className="admin-table-header-row">
+            <div className="flex items-center flex-wrap gap-2">
+              <h3 className="admin-table-title">Registered Leads</h3>
+              <span className="admin-table-count">({pagination.totalRecords} records found)</span>
+              
+              {/* Active Filter Badges */}
+              {(startDate || endDate || selectedStatus !== 'ALL' || selectedCity !== 'ALL' || searchQuery) && (
+                <div className="flex items-center flex-wrap gap-1.5 ml-2">
+                  {datePreset !== 'ALL' && (
+                    <span className="admin-active-chip">
+                      <Calendar className="w-3 h-3 text-amber-400" />
+                      {datePreset === 'TODAY' && 'Today'}
+                      {datePreset === 'YESTERDAY' && 'Yesterday'}
+                      {datePreset === 'LAST_7_DAYS' && 'Last 7 Days'}
+                      {datePreset === 'THIS_MONTH' && 'This Month'}
+                      {datePreset === 'CUSTOM' && `${startDate || 'Start'} to ${endDate || 'Now'}`}
+                    </span>
+                  )}
+                  {selectedStatus !== 'ALL' && (
+                    <span className="admin-active-chip">
+                      Status: {selectedStatus}
+                    </span>
+                  )}
+                  {selectedCity !== 'ALL' && (
+                    <span className="admin-active-chip">
+                      City: {selectedCity}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="admin-table-responsive">
@@ -737,7 +977,7 @@ export default function AdminDashboard({ onBackToHome }) {
                 <tr>
                   <th>Lead ID</th>
                   <th>Contact Person</th>
-                  <th>School / Institution</th>
+                  <th>School </th>
                   <th>City</th>
                   <th>Status</th>
                   <th>Quick Contact</th>
@@ -1033,7 +1273,7 @@ export default function AdminDashboard({ onBackToHome }) {
               </div>
 
               <div className="admin-form-group">
-                <label className="admin-form-label">School / Institution Name *</label>
+                <label className="admin-form-label">School *</label>
                 <input
                   type="text"
                   required

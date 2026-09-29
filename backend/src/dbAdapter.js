@@ -202,11 +202,52 @@ function saveLocalLeads(leads) {
   }
 }
 
-export async function getAllLeads({ q, status, page = 1, limit = 10 }) {
+// Helper to parse and sanitize date range filters
+function parseDateRange(startDateStr, endDateStr) {
+  let gte = null;
+  let lte = null;
+
+  if (startDateStr && startDateStr.trim()) {
+    const s = startDateStr.trim();
+    const d = new Date(s.includes('T') ? s : `${s}T00:00:00.000Z`);
+    if (!isNaN(d.getTime())) {
+      gte = d;
+    }
+  }
+
+  if (endDateStr && endDateStr.trim()) {
+    const s = endDateStr.trim();
+    const d = new Date(s.includes('T') ? s : `${s}T23:59:59.999Z`);
+    if (!isNaN(d.getTime())) {
+      lte = d;
+    }
+  }
+
+  // If start date is after end date, swap to prevent empty results
+  if (gte && lte && gte > lte) {
+    const temp = gte;
+    gte = lte;
+    lte = temp;
+  }
+
+  return { gte, lte };
+}
+
+export async function getAllLeads({ q, status, city, startDate, endDate, page = 1, limit = 10 }) {
+  const { gte, lte } = parseDateRange(startDate, endDate);
+
   if (isPostgresAvailable) {
     try {
       const whereClause = {};
       if (status && status !== 'ALL') whereClause.status = status.toUpperCase();
+      if (city && city !== 'ALL') whereClause.city = { equals: city.trim(), mode: 'insensitive' };
+
+      if (gte || lte) {
+        whereClause.createdAt = {};
+        if (gte) whereClause.createdAt.gte = gte;
+        if (lte) whereClause.createdAt.lte = lte;
+      }
+
       if (q && q.trim()) {
         const search = q.trim();
         whereClause.OR = [
@@ -243,9 +284,14 @@ export async function getAllLeads({ q, status, page = 1, limit = 10 }) {
         totalRecords,
         page: currentPage,
         limit: pageSize,
-        totalPages
+        totalPages,
+        dateFilter: {
+          startDate: gte ? gte.toISOString() : null,
+          endDate: lte ? lte.toISOString() : null
+        }
       };
     } catch (e) {
+      console.warn('PostgreSQL query failed, falling back to local storage:', e.message);
       isPostgresAvailable = false;
     }
   }
@@ -255,6 +301,20 @@ export async function getAllLeads({ q, status, page = 1, limit = 10 }) {
 
   if (status && status !== 'ALL') {
     leads = leads.filter((l) => l.status && l.status.toUpperCase() === status.toUpperCase());
+  }
+
+  if (city && city !== 'ALL') {
+    leads = leads.filter((l) => (l.city || '').trim().toUpperCase() === city.trim().toUpperCase());
+  }
+
+  if (gte || lte) {
+    leads = leads.filter((l) => {
+      const time = new Date(l.createdAt).getTime();
+      if (isNaN(time)) return true;
+      if (gte && time < gte.getTime()) return false;
+      if (lte && time > lte.getTime()) return false;
+      return true;
+    });
   }
 
   if (q && q.trim()) {
@@ -286,7 +346,11 @@ export async function getAllLeads({ q, status, page = 1, limit = 10 }) {
     totalRecords,
     page: currentPage,
     limit: pageSize,
-    totalPages
+    totalPages,
+    dateFilter: {
+      startDate: gte ? gte.toISOString() : null,
+      endDate: lte ? lte.toISOString() : null
+    }
   };
 }
 
