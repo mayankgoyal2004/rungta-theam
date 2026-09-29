@@ -297,10 +297,10 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* 3. SCHOOL  */}
+                {/* 3. SCHOOL Name */}
                 <div className="hero-reg-input-group">
                   <label className="hero-reg-label">
-                    School <span className="text-red-400">*</span>
+                    School Name <span className="text-red-400">*</span>
                   </label>
                   <div className="hero-reg-input-wrap">
                     <School className="hero-reg-field-icon" />

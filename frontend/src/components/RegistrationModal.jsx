@@ -201,7 +201,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
               {/* 3. SCHOOL */}
               <div className="reg-form-group">
                 <label className="reg-form-label">
-                  School  <span className="text-red-600">*</span>
+                  School Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
